@@ -1,4 +1,7 @@
 body {
   margin: 0px;
   padding: 0px;
+  background-image: url("https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1500");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
