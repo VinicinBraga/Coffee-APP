@@ -5,10 +5,9 @@ export default function Header(props) {
 
   return (
     <div className="card-container">
-      <h3>
-        Produto: {name} | Description:
-        {description} | Price: {price}
-      </h3>
+      <h2>Produto: {name}</h2>
+      <h3>Description:{description} </h3>
+      <h3>Price: {price}</h3>
     </div>
   );
 }

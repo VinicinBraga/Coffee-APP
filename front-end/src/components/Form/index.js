@@ -58,6 +58,7 @@ export default function Form() {
         </div>
       </div>
       <div className="form-card">
+        <h1>Coffees</h1>
         {productList.map((value) => {
           return (
             <ProductCards
