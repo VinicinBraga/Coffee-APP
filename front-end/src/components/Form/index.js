@@ -29,24 +29,27 @@ export default function Form() {
   return (
     <div className="form-main">
       <div className="form-conteiner">
-        <label>Product Name:</label>
+        <label className="label-form">Product Name:</label>
         <input
+          className="input-form"
           type="text"
           name="productName"
           onChange={(e) => {
             setProductName(e.target.value);
           }}
         />
-        <label>Description:</label>
+        <label className="label-form">Description:</label>
         <input
+          className="input-form-description"
           type="text"
           name="review"
           onChange={(e) => {
             setproductDescription(e.target.value);
           }}
         />
-        <label>Price:</label>
+        <label className="label-form">Price:</label>
         <input
+          className="input-form"
           type="number"
           name="price"
           onChange={(e) => {

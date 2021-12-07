@@ -1,21 +1,20 @@
 .form-main {
   display: flex;
   flex-direction: row;
-  font-family: Arial, Helvetica, sans-serif;
 }
+
 .form-conteiner {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 100px;
+  justify-items: left;
+  margin-top: 200px;
   padding-top: 20px;
   height: 100%;
   width: 260px;
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #383737;
-  box-shadow: 0px 4px 4px -1px #000000;
+  background-color: #091014;
 }
 
 .form-card {
@@ -24,23 +23,34 @@
   flex-direction: column;
   align-items: center;
   width: 60%;
-  margin-top: 105px;
+  margin-top: 210px;
   margin-left: 260px;
 }
 .form-card h1 {
-  margin-left: 200px;
+  margin-left: 20vw;
 }
 
-label {
-  display: flex;
-  align-items: flex-start;
-  color: rgb(15, 15, 15);
-  text-shadow: 3px 2px 3px rgba(255, 255, 255, 0.308);
-  font-family: Arial, Helvetica, sans-serif;
+.label-form {
+  color: white;
+  font-weight: bold;
   margin-top: 20px;
+  margin-left: 30px;
+}
+.input-form {
+  margin-left: 30px;
+  margin-right: 30px;
+}
+.input-form-description {
+  margin-left: 30px;
+  margin-right: 30px;
+  height: 100px;
 }
 
 button {
+  display: flex;
   margin-top: 10px;
-  margin-bottom: 10px;
+  margin-left: -30px;
+  position: relative;
+  top: 50%;
+  left: 50%;
 }

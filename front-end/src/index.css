@@ -1,7 +1,8 @@
 body {
   margin: 0px;
   padding: 0px;
-  background-image: url("https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=1500");
+  background-image: url("https://images.pexels.com/photos/374885/pexels-photo-374885.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=960");
   background-repeat: no-repeat;
   background-attachment: fixed;
+  font-family: Arial, Helvetica, sans-serif;
 }
