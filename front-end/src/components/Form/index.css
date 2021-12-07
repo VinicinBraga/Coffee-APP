@@ -46,7 +46,7 @@
   height: 100px;
 }
 
-button {
+.form-btn {
   display: flex;
   margin-top: 10px;
   margin-left: -30px;

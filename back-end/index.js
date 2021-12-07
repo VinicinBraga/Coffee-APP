@@ -51,4 +51,17 @@ app.post("/api/insert", (req, res) => {
   );
 });
 
+app.delete("/api/delete/:productName", (req, res) => {
+  const name = req.params.productName;
+  const sqlDelete = "DELETE FROM products WHERE productName = ?";
+  db.query(sqlDelete, name, (err, result) => {
+    if (err) {
+      console.log(err);
+    }
+    if (result) {
+      console.log(`${name} has been Deleted`);
+    }
+  });
+});
+
 app.listen(port, () => console.log(`App listening on port ${port}!`));

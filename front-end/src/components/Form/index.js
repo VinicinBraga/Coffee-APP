@@ -21,9 +21,19 @@ export default function Form() {
       productName: productName,
       productDescription: productDescription,
       productPrice: productPrice,
-    }).then(() => {
-      alert("Sucsses to insert");
     });
+    setProductList([
+      ...productList,
+      {
+        productName: productName,
+        productDescription: productDescription,
+        productPrice: productPrice,
+      },
+    ]);
+  };
+
+  const deleteProduct = (name) => {
+    Axios.delete(`http://localhost:3001/api/delete/${name}`);
   };
 
   return (
@@ -57,7 +67,9 @@ export default function Form() {
           }}
         />
         <div>
-          <button onClick={submitProduct}>Submit</button>
+          <button className="form-btn" onClick={submitProduct}>
+            Submit
+          </button>
         </div>
       </div>
       <div className="form-card">
@@ -68,6 +80,7 @@ export default function Form() {
               name={value.productName}
               description={value.productDescription}
               price={value.productPrice}
+              deleteProduct={deleteProduct}
             />
           );
         })}
