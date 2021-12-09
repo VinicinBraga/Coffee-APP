@@ -1,39 +1,26 @@
-import React, { useState, useEffect } from "react";
-import ProductCards from "../ProductCards/index";
+import React, { useState } from "react";
+import ProductCards from "../Cards/index";
 import Axios from "axios";
 import "../Form/index.css";
 
 export default function Form() {
-  const [productName, setProductName] = useState("");
-  const [productDescription, setproductDescription] = useState("");
-  const [productPrice, setproductPrice] = useState("");
-  const [productList, setProductList] = useState([]);
+  const [values, setValues] = useState();
 
-  useEffect(() => {
-    Axios.get("http://localhost:3001/api/get").then((response) => {
-      setProductList(response.data);
-      console.log(response.data);
-    });
-  }, []);
-
-  const submitProduct = () => {
-    Axios.post("http://localhost:3001/api/insert", {
-      productName: productName,
-      productDescription: productDescription,
-      productPrice: productPrice,
-    });
-    setProductList([
-      ...productList,
-      {
-        productName: productName,
-        productDescription: productDescription,
-        productPrice: productPrice,
-      },
-    ]);
+  const hadleChangeValues = (value) => {
+    setValues((preValue) => ({
+      ...preValue,
+      [value.target.name]: value.target.value,
+    }));
   };
 
-  const deleteProduct = (name) => {
-    Axios.delete(`http://localhost:3001/api/delete/${name}`);
+  const handleSubmitButton = () => {
+    Axios.post("http://localhost:3001/api/insert", {
+      coffeeName: values.coffeeName,
+      coffeeDescription: values.coffeeDescription,
+      coffeePrice: values.coffeePrice,
+    }).then((response) => {
+      console.log(response);
+    });
   };
 
   return (
@@ -43,47 +30,32 @@ export default function Form() {
         <input
           className="input-form"
           type="text"
-          name="productName"
-          onChange={(e) => {
-            setProductName(e.target.value);
-          }}
+          name="coffeeName"
+          onChange={hadleChangeValues}
         />
         <label className="label-form">Description:</label>
         <input
           className="input-form-description"
           type="text"
-          name="review"
-          onChange={(e) => {
-            setproductDescription(e.target.value);
-          }}
+          name="coffeeDescription"
+          onChange={hadleChangeValues}
         />
         <label className="label-form">Price:</label>
         <input
           className="input-form"
           type="number"
-          name="price"
-          onChange={(e) => {
-            setproductPrice(e.target.value);
-          }}
+          name="coffeePrice"
+          onChange={hadleChangeValues}
         />
         <div>
-          <button className="form-btn" onClick={submitProduct}>
+          <button className="form-btn" onClick={() => handleSubmitButton()}>
             Submit
           </button>
         </div>
       </div>
       <div className="form-card">
         <h1>Coffees</h1>
-        {productList.map((value) => {
-          return (
-            <ProductCards
-              name={value.productName}
-              description={value.productDescription}
-              price={value.productPrice}
-              deleteProduct={deleteProduct}
-            />
-          );
-        })}
+        <ProductCards />
       </div>
     </div>
   );

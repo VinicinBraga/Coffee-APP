@@ -1,10 +1,19 @@
 import "../Header/index.css";
-import logo from "../img/logo.png";
+import logo from "../img/logo.mp4";
 
 export default function Header() {
   return (
     <div className="main-container">
-      <img className="logo" src={logo} alt="logo" />
+      <video
+        muted
+        autoPlay={"autoplay"}
+        preLoad="auto"
+        loop
+        className="logo"
+        type="video/mp4"
+        src={logo}
+        alt="logo"
+      />
       <h1 className="title">.Coffee Aplication</h1>
     </div>
   );
