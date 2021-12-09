@@ -1,10 +1,12 @@
-import React, { useState } from "react";
-import ProductCards from "../Cards/index";
+import React, { useState, useEffect } from "react";
+import CoffeeCards from "../Cards/index";
 import Axios from "axios";
 import "../Form/index.css";
 
 export default function Form() {
   const [values, setValues] = useState();
+  const [coffeeList, setCoffeeList] = useState();
+  console.log(coffeeList);
 
   const hadleChangeValues = (value) => {
     setValues((preValue) => ({
@@ -22,6 +24,12 @@ export default function Form() {
       console.log(response);
     });
   };
+
+  useEffect(() => {
+    Axios.get("http://localhost:3001/api/get").then((response) => {
+      setCoffeeList(response.data);
+    });
+  }, []);
 
   return (
     <div className="form-main">
@@ -55,7 +63,19 @@ export default function Form() {
       </div>
       <div className="form-card">
         <h1>Coffees</h1>
-        <ProductCards />
+        {typeof coffeeList !== "undefined" &&
+          coffeeList.map((value) => {
+            return (
+              <CoffeeCards
+                key={value.id}
+                coffeeList={coffeeList}
+                setCoffeeList={setCoffeeList}
+                coffeeName={value.coffeeName}
+                coffeeDescription={value.coffeeDescription}
+                coffeePrice={value.coffeePrice}
+              />
+            );
+          })}
       </div>
     </div>
   );

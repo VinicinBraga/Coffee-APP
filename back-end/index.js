@@ -3,6 +3,9 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const mysql = require("mysql");
 
+const app = express();
+const port = 3001;
+
 const db = mysql.createPool({
   host: "localhost",
   user: "vinicin",
@@ -10,57 +13,31 @@ const db = mysql.createPool({
   database: "Products_DataBase",
 });
 
-const app = express();
-const port = 3001;
-
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.get("/api/get", (req, res) => {
-  const sqlSelect = "SELECT * FROM products";
-  db.query(sqlSelect, (err, result) => {
-    if (err) {
-      console.log(err);
-    }
-    if (result) {
-      res.send(result);
-      console.log(`Items were selected`);
-    }
-  });
-});
 
 app.post("/api/insert", (req, res) => {
-  const productName = req.body.productName;
-  const productDescription = req.body.productDescription;
-  const productPrice = req.body.productPrice;
+  const { coffeeName } = req.body;
+  const { coffeeDescription } = req.body;
+  const { coffeePrice } = req.body;
 
-  const sqlInsert =
-    "INSERT INTO products (productName, productDescription, productPrice) VALUES (?,?,?)";
+  let mySQL =
+    "INSERT INTO CoffeeDB (coffeeName, coffeeDescription, coffeePrice) VALUES (?, ?, ?)";
   db.query(
-    sqlInsert,
-    [productName, productDescription, productPrice],
+    mySQL,
+    [coffeeName, coffeeDescription, coffeePrice],
     (err, result) => {
-      if (err) {
-        console.log(err);
-      }
-      if (result) {
-        console.log(`${productName} has been inserted`);
-      }
+      if (err) console.log(err);
+      else console.log(`${coffeeName} has been inserted`);
     }
   );
 });
 
-app.delete("/api/delete/:productName", (req, res) => {
-  const name = req.params.productName;
-  const sqlDelete = "DELETE FROM products WHERE productName = ?";
-  db.query(sqlDelete, name, (err, result) => {
-    if (err) {
-      console.log(err);
-    }
-    if (result) {
-      console.log(`${name} has been Deleted`);
-    }
+app.get("/api/get", (req, res) => {
+  let mySQL = "SELECT * from CoffeeDB";
+  db.query(mySQL, (err, result) => {
+    if (err) console.log(err);
+    else res.send(result);
   });
 });
 
