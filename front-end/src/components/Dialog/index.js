@@ -23,6 +23,7 @@ export default function FormDialog(props) {
       coffeePrice: editValues.coffeePrice,
     });
     handleClose();
+    window.location.reload();
   };
 
   const handleClose = () => {
@@ -30,8 +31,8 @@ export default function FormDialog(props) {
   };
 
   const handleChangeValues = (value) => {
-    setEditValues((preValues) => ({
-      ...preValues,
+    setEditValues((prevValues) => ({
+      ...prevValues,
       [value.target.id]: value.target.value,
     }));
   };
@@ -47,7 +48,7 @@ export default function FormDialog(props) {
         <TextField
           autoFocus
           margin="dense"
-          id="name"
+          id="coffeeName"
           label="Coffee Name"
           defaultValue={props.coffeeName}
           type="text"
@@ -57,7 +58,7 @@ export default function FormDialog(props) {
         <TextField
           autoFocus
           margin="dense"
-          id="Description"
+          id="coffeeDescription"
           label="Description"
           defaultValue={props.coffeeDescription}
           type="text"
@@ -67,7 +68,7 @@ export default function FormDialog(props) {
         <TextField
           autoFocus
           margin="dense"
-          id="Price"
+          id="coffeePrice"
           label="Price"
           defaultValue={props.coffeePrice}
           type="text"
@@ -79,8 +80,10 @@ export default function FormDialog(props) {
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button color="primary">Excluir</Button>
-        <Button color="primary" onClick={handleEditValues}>
+        <Button onClick={handleClose} color="primary">
+          Excluir
+        </Button>
+        <Button onClick={handleEditValues} color="primary">
           Salvar
         </Button>
       </DialogActions>

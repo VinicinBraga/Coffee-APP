@@ -15,13 +15,18 @@ export default function Form() {
   };
 
   const handleSubmitButton = () => {
-    Axios.post("http://localhost:3001/api/insert", {
-      coffeeName: values.coffeeName,
-      coffeeDescription: values.coffeeDescription,
-      coffeePrice: values.coffeePrice,
-    }).then((response) => {
-      console.log(response);
-    });
+    if (values === undefined) {
+      alert("The game store fields must be filled");
+    } else {
+      Axios.post("http://localhost:3001/api/insert", {
+        coffeeName: values.coffeeName,
+        coffeeDescription: values.coffeeDescription,
+        coffeePrice: values.coffeePrice,
+      }).then((response) => {
+        console.log(response.data);
+      });
+      window.location.reload();
+    }
   };
 
   useEffect(() => {
@@ -64,8 +69,6 @@ export default function Form() {
         <h1>Coffees</h1>
         {typeof coffeeList !== "undefined" &&
           coffeeList.map((value) => {
-            console.log(coffeeList);
-
             return (
               <CoffeeCards
                 key={value.id}
