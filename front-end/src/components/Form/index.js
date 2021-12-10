@@ -6,7 +6,6 @@ import "../Form/index.css";
 export default function Form() {
   const [values, setValues] = useState();
   const [coffeeList, setCoffeeList] = useState();
-  console.log(coffeeList);
 
   const hadleChangeValues = (value) => {
     setValues((preValue) => ({
@@ -65,11 +64,14 @@ export default function Form() {
         <h1>Coffees</h1>
         {typeof coffeeList !== "undefined" &&
           coffeeList.map((value) => {
+            console.log(coffeeList);
+
             return (
               <CoffeeCards
                 key={value.id}
                 coffeeList={coffeeList}
                 setCoffeeList={setCoffeeList}
+                id={value.id}
                 coffeeName={value.coffeeName}
                 coffeeDescription={value.coffeeDescription}
                 coffeePrice={value.coffeePrice}
