@@ -22,6 +22,7 @@ export default function Form() {
         coffeeName: values.coffeeName,
         coffeeDescription: values.coffeeDescription,
         coffeePrice: values.coffeePrice,
+        coffeeWeight: values.coffeeWeight,
       }).then((response) => {
         console.log(response.data);
       });
@@ -38,7 +39,7 @@ export default function Form() {
   return (
     <div className="form-main">
       <div className="form-conteiner">
-        <label className="label-form">Product Name:</label>
+        <label className="label-form">Coffee Type:</label>
         <input
           className="input-form"
           type="text"
@@ -46,7 +47,7 @@ export default function Form() {
           onChange={hadleChangeValues}
         />
         <label className="label-form">Description:</label>
-        <input
+        <textarea
           className="input-form-description"
           type="text"
           name="coffeeDescription"
@@ -59,6 +60,13 @@ export default function Form() {
           name="coffeePrice"
           onChange={hadleChangeValues}
         />
+        <label className="label-form">Weight:</label>
+        <input
+          className="input-form"
+          type="number"
+          name="coffeeWeight"
+          onChange={hadleChangeValues}
+        />
         <div>
           <button className="form-btn" onClick={() => handleSubmitButton()}>
             Submit
@@ -66,7 +74,7 @@ export default function Form() {
         </div>
       </div>
       <div className="form-card">
-        <h1>Coffees</h1>
+        <h1>COFFEES</h1>
         {typeof coffeeList !== "undefined" &&
           coffeeList.map((value) => {
             return (
@@ -78,6 +86,7 @@ export default function Form() {
                 coffeeName={value.coffeeName}
                 coffeeDescription={value.coffeeDescription}
                 coffeePrice={value.coffeePrice}
+                coffeeWeight={value.coffeeWeight}
               />
             );
           })}

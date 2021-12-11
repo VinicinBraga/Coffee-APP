@@ -13,6 +13,7 @@ export default function FormDialog(props) {
     coffeeName: props.coffeeName,
     coffeeDescription: props.coffeeDescription,
     coffeePrice: props.coffeePrice,
+    coffeeWeight: props.coffeeWeight,
   });
 
   const handleEditValues = () => {
@@ -21,6 +22,7 @@ export default function FormDialog(props) {
       coffeeName: editValues.coffeeName,
       coffeeDescription: editValues.coffeeDescription,
       coffeePrice: editValues.coffeePrice,
+      coffeeWeight: editValues.coffeeWeight,
     });
     handleClose();
     window.location.reload();
@@ -71,6 +73,16 @@ export default function FormDialog(props) {
           id="coffeePrice"
           label="Price"
           defaultValue={props.coffeePrice}
+          type="text"
+          fullWidth
+          onChange={handleChangeValues}
+        />
+        <TextField
+          autoFocus
+          margin="dense"
+          id="coffeeWeight"
+          label="Weight"
+          defaultValue={props.coffeeWeight}
           type="text"
           fullWidth
           onChange={handleChangeValues}

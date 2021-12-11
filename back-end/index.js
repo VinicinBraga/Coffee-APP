@@ -20,12 +20,13 @@ app.post("/api/insert", (req, res) => {
   const { coffeeName } = req.body;
   const { coffeeDescription } = req.body;
   const { coffeePrice } = req.body;
+  const { coffeeWeight } = req.body;
 
   let mySQL =
-    "INSERT INTO CoffeeDB (coffeeName, coffeeDescription, coffeePrice) VALUES (?, ?, ?)";
+    "INSERT INTO CoffeeDB (coffeeName, coffeeDescription, coffeePrice, coffeeWeight) VALUES (?, ?, ?, ?)";
   db.query(
     mySQL,
-    [coffeeName, coffeeDescription, coffeePrice],
+    [coffeeName, coffeeDescription, coffeePrice, coffeeWeight],
     (err, result) => {
       if (err) console.log(err);
       else console.log(`${coffeeName} has been inserted`);
@@ -41,4 +42,22 @@ app.get("/api/get", (req, res) => {
   });
 });
 
+app.put("/api/edit", (req, res) => {
+  const { id } = req.body;
+  const { coffeeName } = req.body;
+  const { coffeeDescription } = req.body;
+  const { coffeePrice } = req.body;
+  const { coffeeWeight } = req.body;
+
+  let mySQL =
+    "UPDATE CoffeeDB SET coffeeName = ?, coffeeDescription = ?, coffeePrice = ?, coffeeWeight = ? WHERE id = ?";
+  db.query(
+    mySQL,
+    [coffeeName, coffeeDescription, coffeePrice, coffeeWeight, id],
+    (err, result) => {
+      if (err) console.log(err);
+      else console.log(`${coffeeName} has been edited`);
+    }
+  );
+});
 app.listen(port, () => console.log(`App listening on port ${port}!`));
