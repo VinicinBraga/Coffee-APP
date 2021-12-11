@@ -85,7 +85,12 @@ export default function Form() {
                 id={value.id}
                 coffeeName={value.coffeeName}
                 coffeeDescription={value.coffeeDescription}
-                coffeePrice={value.coffeePrice}
+                coffeePrice={value.coffeePrice
+                  .toLocaleString("pt-br", {
+                    style: "currency",
+                    currency: "BRL",
+                  })
+                  .replace(".", ",")}
                 coffeeWeight={value.coffeeWeight}
               />
             );
