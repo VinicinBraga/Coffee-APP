@@ -60,4 +60,15 @@ app.put("/api/edit", (req, res) => {
     }
   );
 });
+
+app.delete("/api/delete/:id", (req, res) => {
+  const { id } = req.params;
+
+  let mySQL = "DELETE FROM CoffeeDB WHERE id = ?";
+  db.query(mySQL, [id], (err, result) => {
+    if (err) console.log(err);
+    else console.log(`$Card has been deleted`);
+  });
+});
+
 app.listen(port, () => console.log(`App listening on port ${port}!`));

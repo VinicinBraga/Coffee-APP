@@ -28,6 +28,12 @@ export default function FormDialog(props) {
     window.location.reload();
   };
 
+  const handleDelete = () => {
+    Axios.delete(`http://localhost:3001/api/delete/${editValues.id}`);
+    handleClose();
+    window.location.reload();
+  };
+
   const handleClose = () => {
     props.setOpen(false);
   };
@@ -92,7 +98,7 @@ export default function FormDialog(props) {
         <Button onClick={handleClose} color="primary">
           Cancel
         </Button>
-        <Button onClick={handleClose} color="primary">
+        <Button onClick={handleDelete} color="primary">
           Excluir
         </Button>
         <Button onClick={handleEditValues} color="primary">
