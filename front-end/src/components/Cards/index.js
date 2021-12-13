@@ -24,9 +24,10 @@ export default function Cards(props) {
       />
       <div className="card-container" onClick={() => handleOpenEdit()}>
         <h2>Coffee: {props.coffeeName}</h2>
-        <h3>Description: {props.coffeeDescription}</h3>
+        <h3> Description:</h3>
+        <h4 className="text-descripition">{props.coffeeDescription}</h4>
+        <h3>Weight: {props.coffeeWeight}g</h3>
         <h3>Price: {props.coffeePrice}</h3>
-        <h4>Weight: {props.coffeeWeight}g</h4>
       </div>
     </>
   );
