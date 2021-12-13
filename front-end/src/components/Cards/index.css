@@ -4,11 +4,11 @@
   align-items: center;
   color: rgb(255, 255, 255);
   border: black solid 1px;
-  width: 500px;
+  width: 700px;
   height: 500px;
   margin-bottom: 20px;
   margin-left: 20vw;
-
+  cursor: pointer;
   background-color: #091014d0;
 }
 

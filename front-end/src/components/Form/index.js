@@ -74,7 +74,7 @@ export default function Form() {
         </div>
       </div>
       <div className="form-card">
-        <h1>COFFEES</h1>
+        <h1>COFFEES - MENU</h1>
         {typeof coffeeList !== "undefined" &&
           coffeeList.map((value) => {
             return (

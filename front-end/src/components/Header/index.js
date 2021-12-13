@@ -14,7 +14,7 @@ export default function Header() {
         src={logo}
         alt="logo"
       />
-      <h1 className="title">.Coffee Aplication</h1>
+      <h1 className="title">.Coffee Aplication - CRUD</h1>
     </div>
   );
 }

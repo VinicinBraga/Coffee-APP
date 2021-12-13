@@ -54,4 +54,5 @@
   position: relative;
   top: 50%;
   left: 50%;
+  cursor: pointer;
 }
