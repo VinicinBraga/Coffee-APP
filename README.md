@@ -1,6 +1,6 @@
 # Projeto-COFFEE CRUD
 
-CRUD - Banco de dados para uma Cafeteria.
+**CRUD** - Banco de dados para uma Cafeteria.
 O projeto foi realizado em React, NODE e SQL
 
 <p align="center">
